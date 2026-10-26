@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101711">
+    <meta name="description"
+        content="LazyDesk AI — Your private, local-first productivity assistant powered by Ollama.">
+    <title>LazyDesk AI | Work Less, Live More</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <a class="brand" href="#dashboard" aria-label="LazyDesk AI home">
+                <span class="brand-icon">🦥</span>
+                <span>
+                    <strong>LazyDesk</strong>
+                    <small>LOCAL AI WORKSPACE</small>
+                </span>
+            </a>
+
+            <div class="sidebar-label">WORKSPACE</div>
+
+            <nav class="navigation" aria-label="Main navigation">
+                <button class="nav-item active" data-page="dashboard">
+                    <span>◫</span> Dashboard
+                </button>
+                <button class="nav-item" data-page="summary">
+                    <span>▤</span> Smart Summary
+                </button>
+                <button class="nav-item" data-page="tasks">
+                    <span>☑</span> Auto Task Maker
+                </button>
+                <button class="nav-item" data-page="organizer">
+                    <span>▣</span> File Organizer
+                </button>
+                <button class="nav-item" data-page="brief">
+                    <span>☀</span> Morning Brief
+                </button>
+            </nav>
+
+            <div class="sidebar-label">PREFERENCES</div>
+
+            <nav class="navigation" aria-label="Preferences">
+                <button class="nav-item" data-page="setup">
+                    <span>⚙</span> Local AI Setup
+                </button>
+            </nav>
+
+            <div class="sidebar-spacer"></div>
+
+            <div class="privacy-card">
+                <span class="privacy-icon">🔒</span>
+                <strong>Your data stays yours.</strong>
+                <p>AI processing happens on your device through Ollama when configured correctly.</p>
+                <span class="privacy-status">
+                    <span class="status-dot"></span>
+                    LOCAL-FIRST MODE
+                </span>
+            </div>
+
+            <div class="sidebar-footer">
+                <span class="avatar">LD</span>
+                <div>
+                    <strong>My Workspace</strong>
+                    <small>Personal productivity</small>
+                </div>
+                <span class="footer-menu">···</span>
+            </div>
+        </aside>
+
+        <!-- Main application -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰</button>
+
+                    <div class="breadcrumb">
+                        <span>Workspace</span>
+                        <span>/</span>
+                        <strong id="breadcrumbTitle">Dashboard</strong>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <span class="connection-pill" id="connectionStatus">
+                        <span class="status-dot"></span>
+                        Checking AI...
+                    </span>
+                    <button class="icon-button" id="themeToggle" aria-label="Toggle theme"
+                        title="Toggle theme">☾</button>
+                </div>
+            </header>
+
+            <!-- Dashboard page -->
+            <section class="page active" id="page-dashboard">
+                <div class="welcome-row">
+                    <div>
+                        <span class="eyebrow">MONDAY MINDSET, EVERY DAY</span>
+                        <h1>Work less. <span>Live more.</span></h1>
+                        <p class="page-description">
+                            Let your local AI handle the repetitive stuff.
+                            You focus on what matters.
+                        </p>
+                    </div>
+                    <div class="sloth-illustration" aria-label="Sloth mascot">
+                        🦥
+                    </div>
+                </div>
+
+                <div class="hero-card">
+                    <div class="hero-content">
+                        <span class="hero-tag">✦ YOUR PERSONAL AI ASSISTANT</span>
+                        <h2>Slow down.<br>Get more done.</h2>
+                        <p>
+                            Summarize documents, turn messy notes into tasks,
+                            and organize your workflow with local AI.
+                        </p>
+                        <button class="primary-button" data-go="summary">
+                            Get started <span>→</span>
+                        </button>
+                    </div>
+                    <div class="hero-decoration" aria-hidden="true">
+                        <span class="hero-leaf leaf-one">✳</span>
+                        <span class="hero-sloth">🦥</span>
+                        <span class="hero-leaf leaf-two">✳</span>
+                    </div>
+                </div>
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Your productivity toolkit</h2>
+                        <p>Four little helpers. Less busywork.</p>
+                    </div>
+                </div>
+
+                <div class="tool-grid">
+                    <article class="tool-card">
+                        <div class="tool-icon icon-purple">▤</div>
+                        <span class="tool-label">READ LESS</span>
+                        <h3>Smart Summary</h3>
+                        <p>Turn long notes into clear takeaways and action items.</p>
+                        <button class="text-button" data-go="summary">
+                            Summarize notes <span>→</span>
+                        </button>
+                    </article>
+
+                    <article class="tool-card">
+                        <div class="tool-icon icon-green">☑</div>
+                        <span class="tool-label">PLAN SMARTER</span>
+                        <h3>Auto Task Maker</h3>
+                        <p>Transform scattered thoughts into an organized task list.</p>
+                        <button class="text-button" data-go="tasks">
+                            Create tasks <span>→</span>
+                        </button>
+                    </article>
+
+                    <article class="tool-card">
+                        <div class="tool-icon icon-orange">▣</div>
+                        <span class="tool-label">CLEAR THE CLUTTER</span>
+                        <h3>File Organizer</h3>
+                        <p>Get useful filename and category suggestions for your files.</p>
+                        <button class="text-button" data-go="organizer">
+                            Organize files <span>→</span>
+                        </button>
+                    </article>
+
+                    <article class="tool-card">
+                        <div class="tool-icon icon-blue">☀</div>
+                        <span class="tool-label">START CALMLY</span>
+                        <h3>Morning Brief</h3>
+                        <p>See your saved tasks and important notes in one place.</p>
+                        <button class="text-button" data-go="brief">
+                            View my brief <span>→</span>
+                        </button>
+                    </article>
+                </div>
+
+                <div class="bottom-grid">
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Today's focus</h2>
+                                <p>Small steps still count.</p>
+                            </div>
+                            <button class="text-button" data-go="tasks">View all →</button>
+                        </div>
+                        <div id="dashboardTasks" class="task-list">
+                            <div class="empty-state">
+                                <span>🌱</span>
+                                <p>No tasks yet. Create your first task list.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="panel ai-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Local AI status</h2>
+                                <p>Your model, your machine.</p>
+                            </div>
+                            <span class="tool-icon icon-green">✦</span>
+                        </div>
+                        <div class="ai-status-row">
+                            <span class="status-dot" id="modelDot"></span>
+                            <div>
+                                <strong id="modelStatus">Checking connection</strong>
+                                <small id="modelName">Ollama · qwen2.5:3b</small>
+                            </div>
+                        </div>
+                        <p class="panel-description">
+                            Connect to your locally running model to enable AI features.
+                        </p>
+                        <button class="secondary-button" data-go="setup">
+                            Configure local AI →
+                        </button>
+                    </article>
+                </div>
+
+                <footer class="app-footer">
+                    <span>🦥 Made for a slower, smarter workflow.</span>
+                    <span>Powered by open-weight AI · LazyDesk AI</span>
+                </footer>
+            </section>
+
+            <!-- Smart Summary page -->
+            <section class="page" id="page-summary">
+                <div class="page-heading">
+                    <span class="eyebrow">LESS READING, MORE UNDERSTANDING</span>
+                    <h1>Smart <span>Summary</span></h1>
+                    <p class="page-description">
+                        Paste your notes and let your local AI find the important points.
+                    </p>
+                </div>
+
+                <div class="workspace-grid">
+                    <article class="panel editor-panel">
+                        <label for="summaryInput">Your notes or document text</label>
+                        <textarea id="summaryInput" rows="12"
+                            placeholder="Paste your meeting notes, study material, or a long piece of text here..."></textarea>
+
+                        <div class="input-footer">
+                            <span id="summaryCharCount">0 characters</span>
+                            <button class="text-button" id="summarySample">Try sample text</button>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="secondary-button" id="clearSummary">Clear</button>
+                            <button class="primary-button" id="summarizeBtn">
+                                ✦ Summarize with AI
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="panel result-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Your summary</h2>
+                                <p>Generated using your configured local model.</p>
+                            </div>
+                            <span class="tool-icon icon-purple">✦</span>
+                        </div>
+                        <div id="summaryResult" class="result-content" aria-live="polite">
+                            <div class="empty-state">
+                                <span>📝</span>
+                                <strong>Your summary will appear here</strong>
+                                <p>Paste some text and select Summarize with AI.</p>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <button class="secondary-button" id="copySummary">Copy result</button>
+                            <button class="secondary-button" id="downloadSummary">Download .txt</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Auto Task Maker page -->
+            <section class="page" id="page-tasks">
+                <div class="page-heading">
+                    <span class="eyebrow">CLEAR YOUR MIND</span>
+                    <h1>Auto <span>Task Maker</span></h1>
+                    <p class="page-description">
+                        Turn rough notes into a task list you can actually use.
+                    </p>
+                </div>
+
+                <article class="panel editor-panel">
+                    <label for="taskInput">What do you need to get done?</label>
+                    <textarea id="taskInput" rows="5"
+                        placeholder="Example: Finish physics notes by Friday, email my project team, and review the presentation..."></textarea>
+                    <div class="form-actions">
+                        <button class="secondary-button" id="clearTaskInput">Clear</button>
+                        <button class="primary-button" id="generateTasksBtn">
+                            ✦ Generate task list
+                        </button>
+                    </div>
+                </article>
+
+                <article class="panel task-results-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Your tasks</h2>
+                            <p id="taskCount">Nothing on your list yet.</p>
+                        </div>
+                        <button class="secondary-button" id="exportTasks">Export tasks</button>
+                    </div>
+                    <div id="taskResults" class="task-list" aria-live="polite">
+                        <div class="empty-state">
+                            <span>🌿</span>
+                            <p>Your generated tasks will appear here.</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- File Organizer page -->
+            <section class="page" id="page-organizer">
+                <div class="page-heading">
+                    <span class="eyebrow">A LITTLE LESS DIGITAL MESS</span>
+                    <h1>File <span>Organizer</span></h1>
+                    <p class="page-description">
+                        Create a clean rename plan without changing your files automatically.
+                    </p>
+                </div>
+
+                <article class="panel">
+                    <div class="drop-zone" id="fileDropZone">
+                        <div class="drop-icon">📂</div>
+                        <h3>Drop files here</h3>
+                        <p>Or choose files from your computer to create a rename plan.</p>
+                        <label class="secondary-button file-picker-button" for="fileInput">
+                            Choose files
+                        </label>
+                        <input id="fileInput" type="file" multiple hidden>
+                        <small>File names are analyzed in your browser. File contents are not uploaded.</small>
+                    </div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Rename suggestions</h2>
+                            <p>Review every suggestion before using it.</p>
+                        </div>
+                        <button class="secondary-button" id="exportRenamePlan">Export plan</button>
+                    </div>
+                    <div id="fileResults" class="file-results">
+                        <div class="empty-state">
+                            <span>🗂️</span>
+                            <p>Select some files to get started.</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Morning Brief page -->
+            <section class="page" id="page-brief">
+                <div class="page-heading">
+                    <span class="eyebrow">A CALMER WAY TO START</span>
+                    <h1>Morning <span>Brief</span></h1>
+                    <p class="page-description">
+                        A quick overview of your saved tasks and notes.
+                    </p>
+                </div>
+
+                <article class="hero-card brief-hero">
+                    <div class="hero-content">
+                        <span class="hero-tag">☀ YOUR DAILY RESET</span>
+                        <h2>Take it one thing<br>at a time.</h2>
+                        <p>Progress does not need to be rushed. Start with what matters most.</p>
+                        <button class="primary-button" id="generateBriefBtn">
+                            Generate my brief →
+                        </button>
+                    </div>
+                    <div class="hero-decoration" aria-hidden="true">
+                        <span class="hero-sloth">🌿</span>
+                    </div>
+                </article>
+
+                <div id="briefResult" class="panel result-content" aria-live="polite">
+                    <div class="empty-state">
+                        <span>☕</span>
+                        <strong>Your morning brief is waiting.</strong>
+                        <p>Generate a brief from your saved tasks and notes.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Local AI setup page -->
+            <section class="page" id="page-setup">
+                <div class="page-heading">
+                    <span class="eyebrow">OPEN AI, ON YOUR TERMS</span>
+                    <h1>Local AI <span>Setup</span></h1>
+                    <p class="page-description">
+                        Connect LazyDesk to Ollama running on your own computer.
+                    </p>
+                </div>
+
+                <article class="panel setup-panel">
+                    <div class="setup-title">
+                        <div class="tool-icon icon-green">✦</div>
+                        <div>
+                            <h2>Ollama connection</h2>
+                            <p>Local inference with an open-weight model.</p>
+                        </div>
+                    </div>
+
+                    <div class="setup-field">
+                        <label for="ollamaUrl">Ollama API address</label>
+                        <input id="ollamaUrl" type="url" value="http://localhost:11434"
+                            placeholder="http://localhost:11434">
+                        <small>Default address for a local Ollama installation.</small>
+                    </div>
+
+                    <div class="setup-field">
+                        <label for="modelSelect">Model name</label>
+                        <input id="modelSelect" type="text" value="qwen2.5:3b" placeholder="qwen2.5:3b">
+                        <small>Use the exact model name shown by the command ollama list.</small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="secondary-button" id="saveSettingsBtn">
+                            Save settings
+                        </button>
+                        <button class="primary-button" id="testConnectionBtn">
+                            Test connection
+                        </button>
+                    </div>
+
+                    <div id="setupMessage" class="setup-message" aria-live="polite">
+                        Configure your model, then test the connection.
+                    </div>
+                </article>
+
+                <article class="panel guide-panel">
+                    <h2>Quick start guide</h2>
+                    <p>Complete these steps on your computer before using local AI.</p>
+
+                    <ol class="setup-steps">
+                        <li>
+                            <strong>Install Ollama</strong>
+                            <p>Download it from <a href="https://ollama.com/download" target="_blank"
+                                    rel="noopener noreferrer">ollama.com/download</a>.</p>
+                        </li>
+                        <li>
+                            <strong>Download a model</strong>
+                            <pre><code>ollama pull qwen2.5:3b</code></pre>
+                        </li>
+                        <li>
+                            <strong>Check installed models</strong>
+                            <pre><code>ollama list</code></pre>
+                        </li>
+                        <li>
+                            <strong>Start Ollama</strong>
+                            <p>Ensure Ollama is running before testing the connection.</p>
+                        </li>
+                        <li>
+                            <strong>Open LazyDesk locally</strong>
+                            <p>Use a local development server if your browser blocks requests from a file URL. Configure
+                                allowed origins if necessary.</p>
+                        </li>
+                    </ol>
+                </article>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Accessible status notifications -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+
+</html>
